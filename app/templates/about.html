@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%extends 'base.html'%}
+  {% block title %} Hakkımızda {%endblock%}
+<body>
+
+  {% block aboutus %}
+
+  <h1 class="about_taital">{{ about.feedback }}</h1>
+
+  <p class="lorem_text">{{ about.aboutname }}</p>
+
+    <!-- about section start -->
+    <div class="about_section layout_padding">
+    	<div class="container">
+    		<div class="row">
+				{% for about in about %}
+    			<div class="col-sm-6">
+    				<div><img src="{{ url_for('static', filename='images/' + about.image_filename) }}" class="image_8"></div>
+    			</div>
+    			<div class="col-sm-6">
+    				<h1 class="about_taital">{{ about.feedback }}</h1>
+    				<p class="lorem_text">{{ about.aboutname }}</p>
+    			</div>
+				{% endfor %}
+    		</div>
+    	</div>
+    </div>
+    <!-- about section end -->
+    {%endblock%}
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>{% block title %} {%endblock%}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <!-- fevicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png" type="image/gif') }}" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css') }}">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen') }}">
+</head>
+
+<body>
+
+    <header>
+    </header>
+
+    <main>
+        {%block header%}
+        {%include "_header.html" %}
+        {%endblock%}
+
+        {%block content%}
+        {%block index%}
+        {%endblock%}
+        {%block whatwedo%}
+        {%endblock%}
+        {% block aboutus %}
+        {%endblock%}
+        {% block portfolio %}
+        {%endblock%}
+        {% block consulting %}
+        {%endblock%}
+        {% block client %}
+        {%endblock%}
+        {% block quote %}
+        {%endblock%}
+
+        {% block contact %}
+        {%endblock%}
+    </main>
+
+    <footer>
+        {%block footer %}
+        {%include "_footer.html" %}
+        {%endblock%}
+    </footer>
+    {%endblock%}
+
+
+    <!-- Javascript files-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/plugin.js')}}"></script>
+    <!-- sidebar -->
+    <script src="{{url_for('static', filename= 'js/jquery.mCustomScrollbar.concat.min.js')}} "></script>
+    <script src="{{url_for('static', filename='js/custom.js')}} "></script>
+    <!-- javascript -->
+    <script src="{{url_for('static', filename='js/owl.carousel.js')}} "></script>
+    <script
+        src="{{url_for('static', filename='https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js')}} "></script>
+    <script>
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+
+            $(".zoom").hover(function () {
+
+                $(this).addClass('transition');
+            }, function () {
+
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+</body>
+
+</html>

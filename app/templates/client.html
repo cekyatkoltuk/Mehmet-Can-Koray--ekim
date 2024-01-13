@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'base.html' %}
+
+{% block title %} Müşteriler {%endblock%}
+
+{% block client %}
+
+<!-- client section start -->
+<div class="client_section layout_padding">
+  <div class="container">
+    <h1 class="what_text">What Is Says Our Clients</h1>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        {% for client_group in clients|batch(3) %}
+          <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+        {% endfor %}
+      </ol>
+
+      <div class="carousel-inner">
+        {% for client_group in clients|batch(3) %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <div class="client_section_2 layout_padding">
+              <div class="row">
+                {% for c in client_group %}
+                  <div class="col-lg-4 col-sm-12">
+                    <p class="ipsum_text">{{ c.feedback }}</p>
+                    <div class="image_16">
+                      <img src="{{ url_for('static', filename='images/' + c.image_filename) }}">
+                    </div>
+                    <div class="adipiscing_text">{{ c.clientname }}</div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- client section end -->
+{% endblock %}
+</html>

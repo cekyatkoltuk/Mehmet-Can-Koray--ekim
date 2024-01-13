@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+{%extends 'base.html'%}
+{% block title %} What We Do {%endblock%}
+
+<body>
+    {%block whatwedo%}
+    <div class="advisor_section layout_padding">
+        <div class="container">
+            <h1 class="what_text">What We Do</h1>
+        </div>
+
+    <div class="advisor_section_2 layout_padding">
+        <div class="container">
+            <div class="box_section">
+                <div class="row">
+                    {% for blog in blogs %}
+
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="box_main">
+
+                            <div class="image_3"></div>
+
+                            <h4 class="consultative_text"> {{ blog.feedback }} </h4>
+
+                            <p class="ipsum_text">{{ blog.blogname }}</p>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {%endblock%}
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!-- client section start -->
+<div class="client_section layout_padding">
+    <div class="container">
+        <h1 class="what_text">What Is Says Our Clients</h1>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            {% for client in clients %}
+
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="client_section_2 layout_padding">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-12">
+                                <p class="ipsum_text">{{ client.feedback }}</p>
+                                <div class="image_16"> <img
+                                        src="{{ url_for('static', filename='images/' + client.image_filename) }}">
+                                </div>
+                                <div class="adipiscing_text">{{ client.clientname }}</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+<!-- client section end -->
+
+
+
+
+
+
+
+
+
+
+
+
+{% block client %}
+<!-- client section start -->
+<div class="client_section layout_padding">
+    <div class="container">
+        <h1 class="what_text">What Is Says Our Clients</h1>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            {% for client in clients %}
+
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="client_section_2 layout_padding">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-12">
+                                <p class="ipsum_text">{{ client.feedback }}</p>
+                                <div class="image_16"> <img
+                                        src="{{ url_for('static', filename='images/' + client.image_filename) }}">
+                                </div>
+                                <div class="adipiscing_text">{{ client.clientname }}</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+<!-- client section end -->
+
+  {%endblock%}
+
+
+
+
+
+
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block title %} İletişim {% endblock %}
+
+<body>
+  {% block contact %}
+  <!-- contact section start -->
+  <div class="Contact_section layout_padding">
+    <div class="container">
+      <h1 class="categories_text">Geri Dönüş Bildirin</h1>
+      <p class="dummy_text">Aşağıdaki formu doldurararak bizimle iletişime geçebilirsiniz</p>
+      <div class="email_box">
+        <div class="input_main">
+          <div class="container">
+            <form action="{{ url_for('contact') }}" method="post">
+              {{ form.hidden_tag() }}
+
+              <div class="form-group">
+                {{ form.name.label(class="email-bt") }}
+                {{ form.name(class="form-control", placeholder="Name") }}
+                {% for error in form.name.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                {{ form.phonenumber.label(class="email-bt") }}
+                {{ form.phonenumber(class="form-control", placeholder="Phone Number") }}
+                {% for error in form.phonenumber.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                {{ form.email.label(class="email-bt") }}
+                {{ form.email(class="form-control", placeholder="Email Address") }}
+                {% for error in form.email.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                {{ form.message.label(class="massage-bt") }}
+                {{ form.message(class="form-control", placeholder="Message", rows="5") }}
+                {% for error in form.message.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="send_bt">
+                <button type="submit">SEND</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- contact section end -->
+
+  <!-- Başarı mesajlarını gösterme kısmı -->
+{% if request.method == 'POST' %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      {# Mesajları temizleme #}
+      {{ get_flashed_messages(category_filter=[category], with_categories=true) }}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endif %}
+  {% endblock %}
+</body>
+
+</html>

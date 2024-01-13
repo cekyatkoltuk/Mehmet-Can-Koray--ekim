@@ -1,0 +1,18 @@
+admin panel yapılacak
+
+paragraflar veri tabanından gelecek  Halledildi.
+
+paragraf ekleme çıkarma yapılacak    Kaldı
+
+iletişim kısmı yapılacak       Yarı Yapıldı Admin Sayfasından Erişim eklemek gerekiyor.
+
+
+Yapılanlar ==
+
+Blog.html veritabanı bağlandı  indexe eklendi
+
+services.html veritabanı bağlandı  indexe eklendi
+
+about.html veritabanı bağlandı  indexe eklendi 
+
+contact sayfası yapıldı veri girildi veritabanına ekleniyor.

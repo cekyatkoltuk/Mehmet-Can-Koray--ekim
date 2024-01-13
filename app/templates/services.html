@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%extends 'base.html'%}
+  {% block title %} Servisler {%endblock%}
+<body>
+
+  {% block portfolio %}
+    <!-- portfolio section start -->
+    <div class="portfolio_section layout_padding">
+        <div class="container">
+            <h1 class="what_text">Our Work Portfolio</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="images_section">
+                <div class="row">
+                  {% for servis in servis %}
+                    <div class="col-sm-4 padding_0">
+                        <div class="container_1">
+                          <img src="{{ url_for('static', filename='images/' + servis.image_filename) }}" alt="Avatar" class="image" style="width:100%">
+                            <div class="middle">
+                              <div class="text"><img src="{{ url_for('static', filename='images/search-icon.png') }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="portfolio_section_2 layout_padding">
+            <div class="container">
+                <h1 class="best_taital">We Are Providing Best Business Service</h1>
+                <p class="best_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <div class="get_bt"><a href="#">Get A Quote</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- portfolio section end -->
+    {%endblock%}
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block title %} İletişim {% endblock %}
+
+<body>
+ {% block contact %}
+ <!-- contact section start -->
+ <div class="Contact_section layout_padding">
+    <div class="container">
+      <h1 class="categories_text">Geri Dönüş Bildirin</h1>
+      <p class="dummy_text">Aşağıdaki formu doldurararak bizimle iletişime geçebilirsiniz</p>
+      <div class="email_box">
+        <div class="input_main">
+          <div class="container">
+            <form action="{{ url_for('contact') }}" method="post">
+              {{ form.hidden_tag() }}
+
+              <div class="form-group">
+                <!--{{ form.name.label(class="email-bt") }}-->
+                {{ form.name(class="form-control", placeholder="Name") }}
+                {% for error in form.name.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                <!--  {{ form.phonenumber.label(class="email-bt") }}-->
+                {{ form.phonenumber(class="form-control", placeholder="Phone Number") }}
+                {% for error in form.phonenumber.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                <!-- {{ form.email.label(class="email-bt") }}-->
+                {{ form.email(class="form-control", placeholder="Email Address") }}
+                {% for error in form.email.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="form-group">
+                <!-- contact section start {{ form.message.label(class="massage-bt") }}-->
+                {{ form.message(class="form-control", placeholder="Message", rows="5") }}
+                {% for error in form.message.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="send_bt">
+                <button type="submit">Gönder</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+ {% if request.method == 'GET' %}
+ {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+     {% for category, message in messages %}
+       {% if category == 'success' %}
+         <div class="alert alert-success">
+           {{ message }}
+         </div>
+       {% elif category == 'error' %}
+         <div class="alert alert-danger">
+           {{ message }}
+         </div>
+       {% endif %}
+     {% endfor %}
+   {% endif %}
+ {% endwith %}
+{% endif %}
+
+<a href="{{ url_for('index') }}">Ana Sayfaya Geri Dön</a>
+ {% endblock %}
+</body>
+
+</html>
